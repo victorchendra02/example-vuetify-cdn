@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- MDI -->
+        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css" rel="stylesheet" />
+        <!-- VUETIFY CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/vuetify@3.7.6/dist/vuetify.min.css" rel="stylesheet" />
+
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+            * {
+                font-family: "Roboto", serif;
+                font-weight: 500;
+                font-style: normal;
+            }
+        </style>
+
+        <title>Diamond</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <!-- VUE 3 -->
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <!-- VUETIFY -->
+        <script src="https://cdn.jsdelivr.net/npm/vuetify@3.7.6/dist/vuetify.min.js"></script>
+
+        <script type="text/x-template" id="app-template">
+            <v-app>
+                <v-container>
+                    <v-card class="mx-auto py-8" width="850">
+                        <h1 class="text-center mb-4">Vue 3 and Vuetify CDN Example Template</h1>
+                        <p class="text-h2 text-center mb-4">{{ count }}</p>
+
+                        <v-row no-gutters justify="space-around">
+                            <v-col cols="auto">
+                                <v-btn
+                                   color="error"
+                                    width="80"
+                                    icon="mdi-minus-thick"
+                                    rounded="lg"
+                                    variant="tonal"
+                                    @click="decrement()"
+                                />
+                            </v-col>
+                            <v-col cols="auto">
+                                <v-btn
+                                   color="primary"
+                                    width="100"
+                                    icon="mdi-numeric-0"
+                                    rounded="lg"
+                                    variant="tonal"
+                                    :ripple="false"
+                                    @click="this.count = 0"
+                                />
+                            </v-col>
+                            <v-col cols="auto">
+                                <v-btn
+                                   color="success"
+                                    width="80"
+                                    icon="mdi-plus-thick"
+                                    rounded="lg"
+                                    variant="flat"
+                                    @click="increment()"
+                                />
+                            </v-col>
+                        </v-row>
+                    </v-card>
+                </v-container>
+            </v-app>
+        </script>
+
+        <script>
+            const { createApp } = Vue;
+            const { createVuetify } = Vuetify;
+
+            const vuetify = createVuetify();
+
+            const app = createApp({
+                template: "#app-template",
+
+                // Options API
+                data() {
+                    return {
+                        count: 0,
+                    };
+                },
+
+                methods: {
+                    increment() {
+                        this.count++;
+                    },
+                    decrement() {
+                        this.count--;
+                    },
+                },
+            })
+                .use(vuetify)
+                .mount("#app");
+        </script>
+    </body>
+</html>
